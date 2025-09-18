@@ -45,7 +45,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 //$router->get('/', 'Welcome::index');
 $router->get('/', 'AdminCon::login');
-$router->post('admin-verify', 'AdminCon::verify');
+$router->post('/admin-verify', 'AdminCon::verify');
 $router->get('/admin-home', 'AdminCon::home');
 $router->get('/admin-forgot-password', 'AdminCon::forgotPassword');
 $router->get('/admin-logout', 'AdminCon::logout');

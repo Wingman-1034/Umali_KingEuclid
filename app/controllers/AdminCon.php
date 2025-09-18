@@ -33,13 +33,11 @@ class AdminCon extends Controller {
         if ($admin) {
             // Set user session and redirect to admin
             $_SESSION['admin'] = $admin;
-            header('Location: /admin-home');
-            exit;
+            redirect('/admin-home');
         } else {
             // Redirect back to login with error
             $_SESSION['error'] = 'Invalid Credentials';
-            header('Location: /');
-            exit;
+            redirect('/');
         }
     }
 

@@ -9,7 +9,7 @@
 <body>
     <div>
         <h1>Admin Login</h1>
-        <form action="admin-verify" method="post">
+        <form action="/admin-verify" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required><br><br>
             <label for="password">Password:</label>
