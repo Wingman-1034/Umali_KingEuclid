@@ -38,7 +38,7 @@ class AdminCon extends Controller {
         } else {
             // Redirect back to login with error
             $_SESSION['error'] = 'Invalid Credentials';
-            header('Location: /admin-login');
+            header('Location: /');
             exit;
         }
     }
