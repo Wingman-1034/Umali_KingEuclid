@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#navigation {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10% 10% 0.01%;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: center; /* center labels */
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#navigation a {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    background: #444;
+    transition: 0.3s;
+    display: block;
+}
+
+#navigation a:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 7px;
+    background: #555;
+    transform: translateY(-5px);
+}
+
+#navigation p {
+    margin-top: 8px;
+    color: #000; /* or #fff depending on your background */
+    font-size: 14px;
+}
