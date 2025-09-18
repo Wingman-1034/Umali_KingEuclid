@@ -24,20 +24,21 @@ class AdminCon extends Controller {
 
     public function verify()
     {
-        $data = [
-            'username' => $this->io->post('username'),
-            'password' => $this->io->post('password')
-        ];
+        if ($this->form_validation->run()) {
+            $email = trim($_POST['username']);
+            $password = trim($_POST['password']);
+            
 
-        $admin = $this->AdminModel->verifyAdmin($data['username'], $data['password']);
-        if ($admin) {
-            // Set user session and redirect to admin
-            $_SESSION['admin'] = $admin;
-            redirect('/admin-home');
-        } else {
+            $admin = $this->AdminModel->verifyAdmin($email, $password);
+            if ($admin) {
+                // Set user session and redirect to admin
+                $_SESSION['admin'] = $admin;
+                redirect('/admin-home');
+            } else {
             // Redirect back to login with error
-            $_SESSION['error'] = 'Invalid Credentials';
-            redirect('/');
+                $_SESSION['error'] = 'Invalid Credentials';
+                redirect('/');
+            }
         }
     }
 
