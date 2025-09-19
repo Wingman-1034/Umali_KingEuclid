@@ -33,11 +33,13 @@ class AdminCon extends Controller {
             if ($admin) {
                 // Set user session and redirect to admin
                 $_SESSION['admin'] = $admin;
-                redirect('/admin-home');
+                header('Location: /admin-home');
+                exit;
             } else {
             // Redirect back to login with error
                 $_SESSION['error'] = 'Invalid Credentials';
-                redirect('/');
+                header('Location: /');
+                exit;
             }
         }
     }
@@ -45,7 +47,7 @@ class AdminCon extends Controller {
     public function home()
     {
         if (!isset($_SESSION['admin'])) {
-            header('Location: /admin-login');
+            header('Location: /');
             exit;
         }
         $this->call->view('admin/home');
@@ -62,8 +64,8 @@ class AdminCon extends Controller {
 
     public function accounts()
     {
-        if (!isset($_SESSION['admin'])) {            
-            header('Location: /admin-login');
+        if (!isset($_SESSION['admin'])) {
+            header('Location: /');
             exit;
         }
         $users = $this->AdminModel->get_all();
@@ -73,7 +75,7 @@ class AdminCon extends Controller {
     public function logout()
     {
         session_destroy();
-        header('Location: /admin-login');
+        header('Location: /');
         exit;
     }
 }
