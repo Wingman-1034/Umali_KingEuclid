@@ -57,13 +57,15 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 |   Example: $database['another_example'] = array('key' => 'value')
 */
 
+$isLocal = in_array($_SERVER['SERVER_NAME'], ['localhost', '127.0.0.1', '::1']);
+
 $database['main'] = array(
     'driver'	=> 'mysql',
-    'hostname'	=> 'sql12.freesqldatabase.com',
-    'port'		=> '3306',
-    'username'	=> 'sql12799002',
-    'password'	=> 'ihyDCZJFDm',
-    'database'	=> 'sql12799002',
+    'hostname'	=> $isLocal ? 'localhost' : (getenv('DB_HOST') ?: 'localhost'),
+    'port'		=> $isLocal ? '3306' : (getenv('DB_PORT') ?: '3306'),
+    'username'	=> $isLocal ? 'root' : (getenv('DB_USER') ?: 'root'),
+    'password'	=> $isLocal ? '' : (getenv('DB_PASS') ?: ''),
+    'database'	=> $isLocal ? 'shoeniverse_lava' : (getenv('DB_NAME') ?: 'shoeniverse_lava'),
     'charset'	=> 'utf8mb4',
     'dbprefix'	=> '',
     // Optional for SQLite
